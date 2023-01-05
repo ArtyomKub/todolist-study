@@ -2,6 +2,13 @@ import React from "react";
 
 type TodolistPropsType = {
     shapka?: string
+    tasks: Array<TasksType>
+}
+
+type TasksType = {
+    id: number
+    title: string
+    isDone: boolean
 }
 
 export const Todolist = (props: TodolistPropsType) => {
@@ -13,9 +20,11 @@ export const Todolist = (props: TodolistPropsType) => {
                 <button>+</button>
             </div>
             <ul>
-                <li><input type="checkbox" checked={true}/> <span>HTTML&CSS</span></li>
-                <li><input type="checkbox" checked={true}/> <span>JS</span></li>
-                <li><input type="checkbox" checked={false}/> <span>React</span></li>
+                {props.tasks.map((el) => {
+                    return (
+                        <li key={el.id}><input type="checkbox" checked={el.isDone}/><span>{el.title}</span></li>
+                    )
+                })}
             </ul>
             <div>
                 <button>All</button>
