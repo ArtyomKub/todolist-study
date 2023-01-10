@@ -17,7 +17,7 @@ export const Todolist = (props: TodolistPropsType) => {
             <h3>{props.shapka}</h3>
             <div>
                 <input/>
-                <button>+</button>
+                <button>++</button>
             </div>
             <ul>
                 {props.tasks.map((el) => {
