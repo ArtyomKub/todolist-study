@@ -1,7 +1,7 @@
 import React from "react";
 
 type TodolistPropsType = {
-    shapka?: string
+    title?: string
     tasks: Array<TasksType>
 }
 
@@ -14,10 +14,10 @@ type TasksType = {
 export const Todolist = (props: TodolistPropsType) => {
     return (
         <div className='App-content'>
-            <h3>{props.shapka}</h3>
+            <h3>{props.title}</h3>
             <div>
                 <input/>
-                <button>++</button>
+                <button>+</button>
             </div>
             <ul>
                 {props.tasks.map((el) => {

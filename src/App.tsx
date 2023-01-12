@@ -21,8 +21,8 @@ const App = () => {
 
     return (
         <div className="App">
-            <Todolist shapka={shapka} tasks={tasks1}/>
-            <Todolist shapka={'What to learn 2222'} tasks={tasks2}/>
+            <Todolist title={shapka} tasks={tasks1}/>
+            <Todolist title={'What to learn 2222'} tasks={tasks2}/>
         </div>
     );
 }
