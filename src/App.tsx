@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import {Todolist} from "./Todolist";
 
+
 const App = () => {
 
     const tasks1 = [
@@ -12,9 +13,17 @@ const App = () => {
         {id: 5, title: 'ReactJS', isDone: false}
     ]
 
+    const removeTask = () => {
+        return (
+            console.log('Fuck Off')
+        )
+    }
+
     return (
         <div className="App">
-            <Todolist title={'What to learn'} tasks={tasks1}/>
+            <Todolist title={'What to learn'}
+                      tasks={tasks1}
+                      removeTask={removeTask}/>
         </div>
     );
 }
