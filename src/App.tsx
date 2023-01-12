@@ -18,26 +18,26 @@ const App = () => {
         setTasks(tasks1.filter(el => el.id !== taskID))
     }
 
-    let [filterButtonName, setFilterButtonName] = useState<FilterButtonType>('All')
-    let durshlak = tasks1;
-    if (filterButtonName === 'Active') {
-        durshlak = tasks1.filter((el) => !el.isDone)
-    }
-    if (filterButtonName === 'Completed') {
-        durshlak = tasks1.filter((el) => el.isDone)
-    }
-
-    const filteredCurrentTasks = (buttonName: FilterButtonType) => {
-        setFilterButtonName(buttonName)
-    }
+    // let [filterButtonName, setFilterButtonName] = useState<FilterButtonType>('All')
+    // let durshlak = tasks1;
+    // if (filterButtonName === 'Active') {
+    //     durshlak = tasks1.filter((el) => !el.isDone)
+    // }
+    // if (filterButtonName === 'Completed') {
+    //     durshlak = tasks1.filter((el) => el.isDone)
+    // }
+    //
+    // const filteredCurrentTasks = (buttonName: FilterButtonType) => {
+    //     setFilterButtonName(buttonName)
+    // }
 
 
     return (
         <div className="App">
             <Todolist title={'What to learn'}
-                      tasks={durshlak}
+                      tasks={tasks1}
                       removeTask={removeTask}
-                      filteredCurrentTasks={filteredCurrentTasks}/>
+            />
         </div>
     );
 }
