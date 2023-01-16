@@ -3,6 +3,7 @@ import './App.css';
 import {Todolist} from "./Todolist";
 import {v1} from "uuid";
 
+
 export type FilterValuesType = 'Active' | 'Completed' | 'All'
 
 const App = () => {
@@ -15,8 +16,13 @@ const App = () => {
         {id: v1(), title: 'ReactJS', isDone: false}
     ])
 
+    const addTask = (inputValue:string) => {
+        const newTask = {id: v1(), title: inputValue, isDone: false}
+        setTasks([newTask, ...tasks])
+    }
+
     const removeTask = (id: string) => {
-        let filteredTasks = tasks.filter(t => t.id != v1());
+        let filteredTasks = tasks.filter(t => t.id !== v1());
         setTasks(filteredTasks)
     }
 
@@ -40,6 +46,7 @@ const App = () => {
                       tasks={tasksForTodolist}
                       removeTask={removeTask}
                       changeFilter={changeFilter}
+                      addTask={addTask}
             />
         </div>
     );
