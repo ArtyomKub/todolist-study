@@ -1,4 +1,4 @@
-import React, {ChangeEvent,KeyboardEvent, useState} from "react";
+import React, {ChangeEvent, KeyboardEvent, useState} from "react";
 import {FilterValuesType} from "./App";
 
 type TaskType = {
@@ -16,6 +16,7 @@ type PropsType = {
 }
 
 export const Todolist = (props: PropsType) => {
+
     let [inputValue, setInputValue] = useState('')
 
     const addTaskHandler = () => {
@@ -31,7 +32,6 @@ export const Todolist = (props: PropsType) => {
         if (event.key === 'Enter') {
             addTaskHandler()
         }
-        console.log(event.key)
     }
 
     return (
