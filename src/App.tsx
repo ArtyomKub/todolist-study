@@ -19,6 +19,7 @@ const App = () => {
     const addTask = (inputValue:string) => {
         const newTask = {id: v1(), title: inputValue, isDone: false}
         setTasks([newTask, ...tasks])
+
     }
 
     const removeTask = (id: string) => {
@@ -30,10 +31,10 @@ const App = () => {
     let tasksForTodolist = tasks;
 
     if (filter === 'Active') {
-        tasksForTodolist = tasks.filter((t) => t.isDone === false);
+        tasksForTodolist = tasks.filter((t) => !t.isDone);
     }
     if (filter === 'Completed') {
-        tasksForTodolist = tasks.filter((t) => t.isDone === true);
+        tasksForTodolist = tasks.filter((t) => t.isDone);
     }
 
     const changeFilter = (value: FilterValuesType) => {
