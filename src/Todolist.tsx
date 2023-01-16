@@ -33,11 +33,9 @@ export const Todolist = (props: PropsType) => {
     const removeTaskHandler = (tId: string) => {
         props.removeTask(tId)
     }
-
     const changeFilterButton = (value: FilterValuesType) => {
         props.changeFilter(value)
     }
-
 
     return (
         <div className='App-content'>
