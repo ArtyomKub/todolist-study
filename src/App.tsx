@@ -23,7 +23,7 @@ const App = () => {
     }
 
     const removeTask = (id: string) => {
-        let filteredTasks = tasks.filter(t => t.id !== v1());
+        let filteredTasks = tasks.filter(t => t.id !== id);
         setTasks(filteredTasks)
     }
 
