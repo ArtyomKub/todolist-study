@@ -20,18 +20,26 @@ type PropsType = {
 
 export const Todolist = (props: PropsType) => {
 
-    let [inputValue, setInputValue] = useState('')
+    let [inputValue, setInputValue] = useState<string>('')
+    let [error, setError] = useState<boolean>(false)
 
     const addTaskHandler = () => {
-        props.addTask(inputValue)
-        setInputValue('')
+        if (inputValue.trim()) {
+            props.addTask(inputValue.trim())
+            setInputValue('')
+        } else {
+            setError(true)
+        }
     }
+
     const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+        setError(false)
         setInputValue(event.currentTarget.value)
     }
     const onKeyDownHandler = (event: KeyboardEvent<HTMLInputElement>) => {
         if (event.key === 'Enter') {
             addTaskHandler()
+
         }
     }
     const removeTaskHandler = (tId: string) => {
@@ -45,9 +53,14 @@ export const Todolist = (props: PropsType) => {
         <div className='App-content'>
             <h3>{props.title}</h3>
             <div>
-                <input value={inputValue} onChange={onChangeHandler} onKeyDown={onKeyDownHandler}/>
+                <input value={inputValue}
+                       className={error ? 'error' : ''}
+                       onChange={onChangeHandler}
+                       onKeyDown={onKeyDownHandler}
+                />
                 <Button name={'+'} callback={addTaskHandler}/>
             </div>
+            <div className={'error-message'}>Title is required</div>
             <ul>
                 {props.tasks.map((t) => {
                         const onClickHandler = () => {

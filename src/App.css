@@ -18,6 +18,28 @@
 
 }
 
-/*.App > div {*/
-/*  margin-right: 50px;*/
-/*}*/
+.App > div {
+  margin-right: 50px;
+}
+
+.error {
+  border: red 6px solid;
+}
+
+.error-message {
+  color: red;
+}
+
+.active-filter {
+  background-color: fuchsia;
+}
+
+.isDone {
+  opacity: 0.5;
+}
+
+
+
+
+
+
