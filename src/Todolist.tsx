@@ -21,19 +21,19 @@ type PropsType = {
 export const Todolist = (props: PropsType) => {
 
     let [inputValue, setInputValue] = useState<string>('')
-    let [error, setError] = useState<boolean>(false)
+    let [error, setError] = useState<string | null>(null)
 
     const addTaskHandler = () => {
         if (inputValue.trim()) {
             props.addTask(inputValue.trim())
             setInputValue('')
         } else {
-            setError(true)
+            setError('Title is required')
         }
     }
 
     const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-        setError(false)
+        setError(null)
         setInputValue(event.currentTarget.value)
     }
     const onKeyDownHandler = (event: KeyboardEvent<HTMLInputElement>) => {
