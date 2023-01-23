@@ -60,7 +60,9 @@ export const Todolist = (props: PropsType) => {
                 />
                 <Button name={'+'} callback={addTaskHandler}/>
             </div>
-            <div className={'error-message'}>Title is required</div>
+            {error && <div className={'error-message'}>Title is required</div>}
+
+            {/*{error ? <div className={'error-message'}>Title is required</div> : <></>}*/}
             <ul>
                 {props.tasks.map((t) => {
                         const onClickHandler = () => {
