@@ -1,9 +1,12 @@
-import React from 'react';
-
+import React, {useState} from 'react';
+import styles from '../../Todolist.module.css'
+import {FilterValuesType} from "../../App";
 
 type PropsType = {
     name: string
     callback: () => void
+    activeFilter?: 'Active' | 'Completed' | 'All'
+    className?:any
 }
 
 export const Button = (props: PropsType) => {
@@ -13,7 +16,7 @@ export const Button = (props: PropsType) => {
     }
 
     return (
-        <button onClick={onClickHandler}>{props.name}</button>
+            <button className={props.name === props.activeFilter ? styles.activeFilter : ''} onClick={onClickHandler}>{props.name}</button>
     );
 };
 

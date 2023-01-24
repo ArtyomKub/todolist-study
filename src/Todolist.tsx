@@ -1,6 +1,7 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from "react";
 import {FilterValuesType} from "./App";
 import {Button} from "./components/Button/Button";
+import styles from './Todolist.module.css'
 
 
 type TaskType = {
@@ -22,6 +23,7 @@ export const Todolist = (props: PropsType) => {
 
     let [inputValue, setInputValue] = useState<string>('')
     let [error, setError] = useState<string | null>(null)
+    let [buttonName, setButtonName] = useState<FilterValuesType>('All')
 
     const addTaskHandler = () => {
         if (inputValue.trim()) {
@@ -31,7 +33,6 @@ export const Todolist = (props: PropsType) => {
             setError('Title is required')
         }
     }
-
     const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
         setError(null)
         setInputValue(event.currentTarget.value)
@@ -47,6 +48,7 @@ export const Todolist = (props: PropsType) => {
     }
     const changeFilterButton = (value: FilterValuesType) => {
         props.changeFilter(value)
+
     }
 
     return (
@@ -54,15 +56,13 @@ export const Todolist = (props: PropsType) => {
             <h3>{props.title}</h3>
             <div>
                 <input value={inputValue}
-                       className={error ? 'error' : ''}
+                       className={error ? styles.error : ''}
                        onChange={onChangeHandler}
                        onKeyDown={onKeyDownHandler}
                 />
                 <Button name={'+'} callback={addTaskHandler}/>
             </div>
-            {error && <div className={'error-message'}>Title is required</div>}
-
-            {/*{error ? <div className={'error-message'}>Title is required</div> : <></>}*/}
+            {error && <div className={styles.errorMessage}>{error}</div>}
             <ul>
                 {props.tasks.map((t) => {
                         const onClickHandler = () => {
@@ -87,15 +87,9 @@ export const Todolist = (props: PropsType) => {
                 )}
             </ul>
             <div>
-                <Button name={'All'} callback={() => {
-                    changeFilterButton('All')
-                }}/>
-                <Button name={'Active'} callback={() => {
-                    changeFilterButton('Active')
-                }}/>
-                <Button name={'Completed'} callback={() => {
-                    changeFilterButton('Completed')
-                }}/>
+                <Button className={buttonName === 'All' ? styles.activeFilter : ''} name={'All'} callback={() => {changeFilterButton('All')}}/>
+                <Button className={buttonName === 'Active' ? styles.activeFilter : ''} name={'Active'} callback={() => {changeFilterButton('Active')}}/>
+                <Button className={buttonName === 'Completed' ? styles.activeFilter : ''} name={'Completed'} callback={() => {changeFilterButton('Completed')}}/>
             </div>
         </div>
     )
